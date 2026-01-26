@@ -1,38 +1,35 @@
-# Introducción a los Large Language Models (LLMs)
+# Proyecto I · Clasificador de imágenes con redes neuronales
 
-**Universidad Nacional Autónoma de México**
-**Facultad de Ciencias**
-**Proyecto I**
+**Universidad Nacional Autónoma de México**  
+**Facultad de Ciencias**  
+**Plan de Trabajo · Proyecto I**
 
-## Información del Curso
+## Datos del curso
 
 - **Semestre:** 2026-2
-- **Grupo:** 6012
-- **Profesor:** Francisco Pérez Carbajal
-- **Email:** franciscop@ciencias.unam.mx
-- **Horario:** Lunes a Viernes de 17:00–18:00
+- **Clave:** 2130035
+- **Grupo:** 6013
+- **Profesor:** José Eduardo Rodríguez Barrios — jrbeduardo@gmail.com
+- **Horario:** Lunes, miércoles y viernes · 17:00–18:00
+- **Ayudante:** Carlos Cuauhtémoc Gutiérrez Salazar — carloscuauhtemoc310123@gmail.com
+- **Horario de ayudante:** Martes y jueves · 17:00–18:00
 
-## Objetivo
+## Objetivo del seminario-taller
 
-Este seminario-taller tiene como propósito que los estudiantes desarrollen un proyecto de titulación en el área de Modelos de Lenguaje Grande (LLMs), integrando fundamentos teóricos con aplicaciones prácticas.
+Desarrollar un proyecto de titulación en aprendizaje profundo aplicado a visión por computadora. Cada estudiante completará un clasificador de imágenes con un flujo integral: definición del problema, preparación de datos, entrenamiento, evaluación, despliegue y documentación profesional.
 
-A través del curso, los estudiantes:
-- Exploran el estado del arte en modelos de lenguaje, desde modelos fundacionales hasta LLMs contemporáneos
-- Diseñan e implementan un proyecto aplicado, desde la preparación del corpus hasta la evaluación y el despliegue
-- Documentan y presentan resultados con rigor técnico y estándares académicos
 
-## Estructura del Repositorio
+## Estructura del repositorio
 
 ```
 intro-llm-fc-unam-2026-2/
-│
 ├── README.md              # Este archivo
-├── clases/               # Material de clases y presentaciones
-├── notebooks/            # Jupyter notebooks con ejercicios y ejemplos
-├── papers/               # Artículos científicos y lecturas del curso
-└── .gitignore           # Archivos y directorios a ignorar
+├── clases/                # Material de clases y presentaciones
+├── notebooks/             # Notebooks con ejercicios y ejemplos
+├── papers/                # Artículos científicos y lecturas del curso
+└── .gitignore             # Archivos y directorios a ignorar
 ```
 
 ## Licencia
 
-Este material es de uso académico para el curso de Introducción a LLMs de la Facultad de Ciencias, UNAM.
+Material de uso académico para la Facultad de Ciencias, UNAM.
