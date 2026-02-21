@@ -16,7 +16,7 @@
 
 ## Objetivo del seminario-taller
 
-Desarrollar un proyecto de titulación en aprendizaje profundo aplicado a visión por computadora. Cada estudiante completará un clasificador de imágenes con un flujo integral: definición del problema, preparación de datos, entrenamiento, evaluación, despliegue y documentación profesional.
+Desarrollar un proyecto de tesis en aprendizaje profundo aplicado a visión por computadora. Cada estudiante completará un clasificador de imágenes con un flujo integral: definición del problema, preparación de datos, entrenamiento, evaluación, despliegue y documentación profesional.
 
 
 ## Estructura del repositorio
