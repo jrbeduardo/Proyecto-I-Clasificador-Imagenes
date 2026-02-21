@@ -22,9 +22,9 @@ Desarrollar un proyecto de titulación en aprendizaje profundo aplicado a visió
 ## Estructura del repositorio
 
 ```
-intro-llm-fc-unam-2026-2/
+Proyecto-I-Clasificador-Imagenes/
 ├── README.md              # Este archivo
-├── clases/                # Material de clases y presentaciones
+├── clases/                # Material de clases
 ├── notebooks/             # Notebooks con ejercicios y ejemplos
 ├── papers/                # Artículos científicos y lecturas del curso
 └── .gitignore             # Archivos y directorios a ignorar
