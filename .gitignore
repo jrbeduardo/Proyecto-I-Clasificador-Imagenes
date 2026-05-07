@@ -55,3 +55,7 @@ checkpoints/
 *.pth
 *.ckpt
 *.weights
+
+# Root helper scripts to omit
+/patch_dinov2.py
+/patch_query_titles.py
