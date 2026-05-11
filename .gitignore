@@ -7,6 +7,11 @@ __pycache__/
 env/
 venv/
 ENV/
+
+# Variables de entorno (contienen secretos)
+.env
+app/.env
+
 build/
 develop-eggs/
 dist/
@@ -36,6 +41,12 @@ tareas/
 *.swp
 *.swo
 *~
+
+# Frontend artifacts
+node_modules/
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/
 
 # OS
 .DS_Store

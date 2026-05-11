@@ -23,6 +23,8 @@ Desarrollar un proyecto de tesis en aprendizaje profundo aplicado a visión por 
 
 ```
 Proyecto-I-Clasificador-Imagenes/
+├── app/                   # API FastAPI para inferencia y recomendacion
+├── frontend/              # Interfaz web React + Vite
 ├── README.md              # Este archivo
 ├── clases/                # Material de clases
 ├── notebooks/             # Notebooks con ejercicios y ejemplos

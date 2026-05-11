@@ -1,0 +1,204 @@
+:root {
+  color-scheme: light;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f8ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f8ff;
+  color: #113b7a;
+}
+
+a {
+  color: inherit;
+}
+
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid #d9e8ff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerInner {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #0f3f88;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+}
+
+.nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2057ad;
+}
+
+.page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: min(1000px, 100%);
+  background: #ffffff;
+  border: 1px solid #d9e8ff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(17, 59, 122, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  color: #0f3f88;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #2e5ea8;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+input[type='file'] {
+  padding: 8px;
+  border: 1px solid #bdd7ff;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  background: #1759bd;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.error {
+  color: #b00020;
+  font-weight: 600;
+}
+
+.previewBox {
+  margin-top: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.panel {
+  background: #fbfdff;
+  border: 1px solid #d9e8ff;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.preview {
+  width: min(100%, 320px);
+  border-radius: 12px;
+  border: 1px solid #bdd7ff;
+}
+
+.filename {
+  color: #2e5ea8;
+  font-size: 0.9rem;
+}
+
+.result {
+  margin-top: 8px;
+}
+
+ul {
+  padding-left: 22px;
+}
+
+.recommendation {
+  white-space: pre-wrap;
+  background: #ffffff;
+  border: 1px solid #d9e8ff;
+  border-radius: 10px;
+  padding: 12px;
+  line-height: 1.45;
+}
+
+.nutritionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.nutritionGrid div {
+  background: #ffffff;
+  border: 1px solid #d9e8ff;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.nutritionGrid span {
+  color: #3a66a7;
+  font-size: 0.85rem;
+}
+
+.healthTag {
+  background: #eaf3ff;
+  border: 1px solid #c7ddff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #154c9e;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 18px;
+  }
+
+  .headerInner {
+    padding: 12px 16px;
+  }
+}
