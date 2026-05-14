@@ -8,10 +8,7 @@ export default function App() {
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
 
-  const imageUrl = useMemo(() => {
-    if (!file) return '';
-    return URL.createObjectURL(file);
-  }, [file]);
+  const imageUrl = useMemo(() => (file ? URL.createObjectURL(file) : ''), [file]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +16,7 @@ export default function App() {
     setResult(null);
 
     if (!file) {
-      setError('Selecciona una imagen primero.');
+      setError('Selecciona una imagen.');
       return;
     }
 
@@ -28,15 +25,12 @@ export default function App() {
 
     try {
       setLoading(true);
-      const response = await fetch(`${API_URL}/recommend`, {
+      const response = await fetch(`${API_URL}/predict`, {
         method: 'POST',
         body: formData,
       });
-
       const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.detail || 'No se pudo obtener la recomendacion.');
-      }
+      if (!response.ok) throw new Error(data.detail || 'Error al predecir.');
       setResult(data);
     } catch (err) {
       setError(err.message || 'Error inesperado.');
@@ -45,114 +39,60 @@ export default function App() {
     }
   }
 
-  function onChangeFile(event) {
-    const selected = event.target.files?.[0];
-    if (!selected) return;
-    setFile(selected);
-    setResult(null);
-    setError('');
-  }
-
   return (
-    <>
-      <header className="header">
-        <div className="headerInner">
-          <div className="brand">Food AI</div>
-          <nav className="nav">
-            <a href="#analyzer">Analizador</a>
-            <a href="#resultados">Resultados</a>
-          </nav>
-        </div>
-      </header>
+    <main className="page">
+      <h1>Food AI</h1>
 
-      <main className="page">
-        <section className="card" id="analyzer">
-          <h1>Recomendador de Comida</h1>
-          <p className="subtitle">
-            Sube una foto y obten top-5 + recomendacion nutricional estructurada.
-          </p>
+      <form onSubmit={handleSubmit} className="form">
+        <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] || null)} />
+        <button type="submit" disabled={loading}>{loading ? 'Analizando...' : 'Predecir'}</button>
+      </form>
 
-          <form className="form" onSubmit={handleSubmit}>
-            <label className="label" htmlFor="imageInput">
-              Imagen de comida
-            </label>
-            <input
-              id="imageInput"
-              type="file"
-              accept="image/*"
-              onChange={onChangeFile}
-            />
+      {error && <p className="error">{error}</p>}
 
-            <button type="submit" disabled={loading}>
-              {loading ? 'Analizando...' : 'Predecir y recomendar'}
-            </button>
-          </form>
+      {file && <img src={imageUrl} alt="preview" className="preview" />}
 
-          {error && <p className="error">{error}</p>}
+      {result && (
+        <section className="result">
+          <p><strong>Top-1:</strong> {result.top1.class_name} ({(result.top1.probability * 100).toFixed(1)}%)</p>
 
-          <div className="grid">
-            {file && (
-              <section className="panel previewBox">
-                <h2>Vista previa</h2>
-                <img src={imageUrl} alt="Vista previa" className="preview" />
-                <p className="filename">{file.name}</p>
-              </section>
-            )}
+          <h3>Top-5</h3>
+          <ul>
+            {result.topk.map((item) => (
+              <li key={item.class_id}>{item.class_name} - {(item.probability * 100).toFixed(1)}%</li>
+            ))}
+          </ul>
 
-            {result && (
-              <section className="panel result" id="resultados">
-                <h2>Resultado</h2>
-                <p>
-                  <strong>Prediccion principal:</strong> {result.top1.class_name} ({(result.top1.probability * 100).toFixed(1)}%)
-                </p>
+          {result.recommendation?.title && <h3>{result.recommendation.title}</h3>}
+          {result.recommendation?.summary && <p>{result.recommendation.summary}</p>}
 
-                <h3>Top-5</h3>
-                <ul>
-                  {result.topk.map((item) => (
-                    <li key={item.class_id}>
-                      {item.class_name} - {(item.probability * 100).toFixed(1)}%
-                    </li>
-                  ))}
-                </ul>
+          {!!result.recommendation?.ingredients?.length && (
+            <>
+              <h4>Ingredientes</h4>
+              <ul>
+                {result.recommendation.ingredients.map((ingredient, idx) => (
+                  <li key={`${ingredient}-${idx}`}>{ingredient}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
-                {result.recommendation?.title && <h3>{result.recommendation.title}</h3>}
-                {result.recommendation?.summary && <p>{result.recommendation.summary}</p>}
+          {result.recommendation?.nutrition && (
+            <>
+              <h4>Informacion nutricional</h4>
+              <div className="nutritionGrid">
+                <div><span>Calorias</span><strong>{result.recommendation.nutrition.calories_kcal}</strong></div>
+                <div><span>Proteinas</span><strong>{result.recommendation.nutrition.protein_g}</strong></div>
+                <div><span>Carbohidratos</span><strong>{result.recommendation.nutrition.carbs_g}</strong></div>
+                <div><span>Grasas</span><strong>{result.recommendation.nutrition.fat_g}</strong></div>
+              </div>
+              <p>{result.recommendation.nutrition.health_assessment}</p>
+            </>
+          )}
 
-                {!!result.recommendation?.ingredients?.length && (
-                  <>
-                    <h4>Ingredientes principales</h4>
-                    <ul>
-                      {result.recommendation.ingredients.map((ingredient, idx) => (
-                        <li key={`${ingredient}-${idx}`}>{ingredient}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-
-                {result.recommendation?.nutrition && (
-                  <>
-                    <h4>Informacion nutricional</h4>
-                    <div className="nutritionGrid">
-                      <div><span>Calorias</span><strong>{result.recommendation.nutrition.calories_kcal}</strong></div>
-                      <div><span>Proteinas</span><strong>{result.recommendation.nutrition.protein_g}</strong></div>
-                      <div><span>Carbohidratos</span><strong>{result.recommendation.nutrition.carbs_g}</strong></div>
-                      <div><span>Grasas</span><strong>{result.recommendation.nutrition.fat_g}</strong></div>
-                    </div>
-                    <p className="healthTag">{result.recommendation.nutrition.health_assessment}</p>
-                  </>
-                )}
-
-                {result.recommendation?.recommendation && (
-                  <>
-                    <h4>Recomendacion</h4>
-                    <p className="recommendation">{result.recommendation.recommendation}</p>
-                  </>
-                )}
-              </section>
-            )}
-          </div>
+          {result.recommendation?.recommendation && <p>{result.recommendation.recommendation}</p>}
         </section>
-      </main>
-    </>
+      )}
+    </main>
   );
 }

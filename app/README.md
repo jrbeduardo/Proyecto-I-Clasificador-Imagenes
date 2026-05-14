@@ -16,8 +16,14 @@ app/
 ## Correr localmente
 
 ```bash
+# Desde la raiz del repositorio
+pip install -r app/requirements-food-api.txt
+python -m uvicorn app.food_api:app --reload
+
+# Alternativa si entras a la carpeta app/
+cd app
 pip install -r requirements-food-api.txt
-uvicorn food_api:app --reload
+python -m uvicorn food_api:app --reload
 ```
 
 ## Correr con Docker

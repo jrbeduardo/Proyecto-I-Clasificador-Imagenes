@@ -1,0 +1,162 @@
+<mxfile host="65bd71144e">
+    <diagram name="ViT freeze and head" id="vit-freeze">
+        <mxGraphModel dx="3777" dy="1277" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1300" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Fine-tuning de ViT-B/16" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="-100" y="20" width="1600" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="col1" value="1) ViT-B/16 pre-entrenado (ImageNet)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontSize=24;fontStyle=1;verticalAlign=top;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="90" width="380" height="930" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-pe" value="patch_embed&lt;br&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Conv2d(3, 768, k=16, s=16)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="170" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-cls" value="cls_token + pos_embed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="240" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-blocks" value="blocks (12 Encoders)&#xa;~85M params" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="300" width="300" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-b1" value="Encoder-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9eb;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="345" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-b2" value="Encoder-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9eb;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="380" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-bd" value="..." style="text;html=1;align=center;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="418" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-b11" value="Encoder-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9eb;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="700" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-b12" value="Encoder-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9eb;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="735" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-norm" value="norm (LayerNorm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="810" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-head" value="head&#xa;Linear(768 -&amp;gt; 1000)&#xa;[ImageNet-1k]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="875" width="300" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-arrow" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=24;" parent="1" source="c1-head" target="c2-head" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1-arr-lbl" value="reemplazar" style="text;html=1;align=center;fontSize=24;fontStyle=2;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="437" y="866" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="col2" value="2) ViT-B/16 para Food-101&amp;nbsp;&lt;div&gt;(full fine-tuning)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;fontSize=24;fontStyle=1;verticalAlign=top;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="90" width="380" height="930" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-pe" value="patch_embed&lt;br&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;(pesos pre-entrenados)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="170" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-cls" value="cls_token + pos_embed&lt;br&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;(pesos pre-entrenados)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="240" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-blocks" value="blocks (12 Encoders)&#xa;TODOS entrenables" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=24;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="300" width="300" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-b1" value="Encoder-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e0bb;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="345" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-b2" value="Encoder-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e0bb;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="380" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-bd" value="..." style="text;html=1;align=center;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="418" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-b11" value="Encoder-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e0bb;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="700" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-b12" value="Encoder-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e0bb;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="735" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-norm" value="norm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="810" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2-head" value="head NUEVA&lt;br&gt;Linear(768 -&amp;gt; 101)&lt;br&gt;num_classes=101" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="871" width="300" height="99" as="geometry"/>
+                </mxCell>
+                <mxCell id="col3" value="3) Alternativa:&amp;nbsp;&lt;div&gt;Linear probing / Last-N&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;fontSize=24;fontStyle=1;verticalAlign=top;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="91" width="380" height="930" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-pe" value="patch_embed&amp;nbsp;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;CONGELADO&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="170" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-cls" value="cls_token + pos_embed &lt;font style=&quot;font-size: 20px;&quot;&gt;CONGELADOS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="240" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-blocks" value="blocks (12 Encoders)&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="300" width="300" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-b1" value="Encoder-1 (frozen)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9eb;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="355" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-b2" value="Encoder-2 (frozen)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9eb;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="390" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-bd" value="..." style="text;html=1;align=center;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="428" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-b11" value="Encoder-11&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e0bb;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="700" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-b12" value="Encoder-12&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e0bb;strokeColor=#82b366;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="735" width="220" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-norm" value="norm (frozen)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="810" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3-head" value="head NUEVA&#xa;Linear(768 -&amp;gt; 101)&#xa;UNICA entrenable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="870" width="300" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="bottom" value="Resumen: con timm cambiar la cabeza es 1 linea (num_classes=101). El congelamiento se controla con requires_grad. En ViT sobre dataset grande es preferible full fine-tuning porque la atencion es global desde la primera capa, a diferencia de las CNNs donde la jerarquia espacial justifica congelar las capas tempranas." style="text;html=1;align=center;fontSize=24;fontStyle=2;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="1047" width="1420" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="I23lWrJYVxFMF9-_Xt38-1" value="&lt;li style=&quot;font-family: &amp;quot;Google Sans Text&amp;quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;&lt;p data-path-to-node=&quot;3,0,0&quot; style=&quot;font-family: &amp;quot;Google Sans Text&amp;quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;&lt;font&gt;&lt;b data-path-to-node=&quot;3,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;font-family: &amp;quot;Google Sans Text&amp;quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;Linear Probing:&lt;/b&gt; Todo &lt;b data-path-to-node=&quot;3,0,0&quot; data-index-in-node=&quot;21&quot; style=&quot;font-family: &amp;quot;Google Sans Text&amp;quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;congelado&lt;/b&gt;. Solo se entrena el cabezal de salida.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li style=&quot;font-family: &amp;quot;Google Sans Text&amp;quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;&lt;p data-path-to-node=&quot;3,0,0&quot; style=&quot;font-family: &amp;quot;Google Sans Text&amp;quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;&lt;font&gt;&lt;b style=&quot;color: rgb(63, 63, 63); background-color: transparent; line-height: 1.15 !important; margin-top: 0px !important;&quot; data-path-to-node=&quot;3,1,0&quot; data-index-in-node=&quot;0&quot;&gt;Last-N:&lt;/b&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt; Solo las &lt;/span&gt;&lt;b style=&quot;color: rgb(63, 63, 63); background-color: transparent; line-height: 1.15 !important; margin-top: 0px !important;&quot; data-path-to-node=&quot;3,1,0&quot; data-index-in-node=&quot;17&quot;&gt;últimas &lt;span class=&quot;math-inline&quot; data-math=&quot;N&quot; data-index-in-node=&quot;25&quot; style=&quot;line-height: 1.15 !important; margin-top: 0px !important;&quot;&gt;N&lt;/span&gt;&amp;nbsp;capas&lt;/b&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt; son entrenables; el resto permanece fijo.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;" style="text;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
+                    <mxGeometry x="1180" y="496" width="260" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="eiRZvOcDbK-BgHm_3czt" name="Page-2">
+        <mxGraphModel dx="216" dy="766" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="1560" y="120" width="380" height="900" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-2" value="CNN: jerarquia espacial clara" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="170" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-3" value="En una CNN las primeras capas detectan bordes/texturas universales y las ultimas detectan partes de objeto especificas. Por eso es comun congelar las primeras y solo entrenar las ultimas: las features bajas ya sirven." style="text;html=1;align=left;fontSize=10;spacingLeft=8;spacingRight=8;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="215" width="340" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-4" value="ViT: atencion global desde la primera capa" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="315" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-5" value="Cada bloque mira TODA la imagen via self-attention. No hay separacion clara entre features low-level y high-level por capa: todos los bloques aprenden representaciones globales utiles. Congelar capas tempranas pierde capacidad de adaptacion." style="text;html=1;align=left;fontSize=10;spacingLeft=8;spacingRight=8;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="360" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-6" value="Dataset suficientemente grande" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="470" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-7" value="Food-101 tiene 75 750 imgs de train. Con datasets grandes, full fine-tune supera a linear probing. Linear probing solo gana cuando hay POCAS imgs (cientos) o GPU muy limitada." style="text;html=1;align=left;fontSize=10;spacingLeft=8;spacingRight=8;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="515" width="340" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-8" value="Cambio de dominio (fine-grained)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="605" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-9" value="ImageNet tiene comida pero no a este nivel de detalle (ramen vs pho, donut vs beignet). Para fine-grained, dejar que el backbone se ajuste mejora la separacion entre clases parecidas." style="text;html=1;align=left;fontSize=10;spacingLeft=8;spacingRight=8;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="650" width="340" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="DzAftfwfHLRddQg7FdsR-11" value="Linear probing : dataset chico (cientos)&#xa;Last-N blocks  : dataset mediano + GPU limitada&#xa;Full fine-tune : dataset grande, dominio nuevo&#xa;                          (Food-101 cae aqui)" style="text;html=1;align=left;fontSize=10;fontFamily=Courier New;spacingLeft=8;spacingRight=8;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="1580" y="775" width="340" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

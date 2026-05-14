@@ -1,0 +1,172 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #475569;
+    --background: #f8fafc;
+    --text-color: #1e293b;
+    --error-color: #ef4444;
+    --success-color: #10b981;
+    --card-bg: #ffffff;
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Botones */
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+
+.btn.primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Sección Health */
+.health-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#health-status {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.status-ok { color: var(--success-color); }
+.status-error { color: var(--error-color); }
+
+/* Subida e Imagen */
+.upload-section h2 { margin-bottom: 1rem; }
+.file-input-wrapper { margin-bottom: 1rem; }
+
+.preview-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--border-radius);
+    border: 1px solid #e2e8f0;
+}
+
+/* Mensajes y estados */
+.hidden { display: none !important; }
+
+.loader {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.error-msg {
+    background-color: #fee2e2;
+    color: var(--error-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    text-align: center;
+    border: 1px solid #fca5a5;
+}
+
+/* Resultados */
+.highlight {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--success-color);
+    text-transform: capitalize;
+}
+
+.topk-list {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.topk-list li {
+    padding: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topk-list li:last-child { border-bottom: none; }
+
+/* Nutrición */
+.nutrition-card h3, .nutrition-card h4 {
+    margin-top: 1rem;
+    color: var(--primary-color);
+}
+
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 1rem 0;
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+.health-assessment { margin-top: 1rem; padding: 10px; background: #ecfdf5; border-radius: var(--border-radius); }
+
+.ing-list { margin-left: 20px; margin-bottom: 1rem; }

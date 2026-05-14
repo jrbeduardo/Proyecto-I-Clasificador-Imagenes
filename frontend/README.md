@@ -6,8 +6,8 @@ Aplicacion React para consumir la API de clasificacion de comida.
 
 - Subir imagen de comida.
 - Ver vista previa de la imagen.
-- Enviar la imagen al endpoint `/recommend`.
-- Mostrar prediccion principal, top-5 y recomendacion.
+- Enviar la imagen al endpoint `/predict`.
+- Mostrar prediccion principal, top-5 y recomendacion simple.
 
 ## Configuracion
 
@@ -23,8 +23,9 @@ VITE_API_URL=http://127.0.0.1:8000
 ## Ejecutar
 
 ```
-npm install
-npm run dev
+cd frontend
+"C:\Program Files\nodejs\npm.cmd" install
+"C:\Program Files\nodejs\npm.cmd" run dev
 ```
 
 Abre el navegador en `http://localhost:5173`.

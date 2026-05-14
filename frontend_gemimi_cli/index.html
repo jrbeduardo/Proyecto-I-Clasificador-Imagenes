@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador de Comida AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Clasificador de Comida AI</h1>
+            <p>Sube una imagen de tu platillo para identificarlo y recibir recomendaciones nutricionales.</p>
+        </header>
+
+        <section class="health-section">
+            <button id="btn-health" class="btn secondary">Verificar Estado del Servidor</button>
+            <span id="health-status"></span>
+        </section>
+
+        <main>
+            <section class="upload-section card">
+                <h2>Cargar Imagen</h2>
+                <div class="file-input-wrapper">
+                    <input type="file" id="file-input" accept="image/*">
+                </div>
+                <div class="preview-container">
+                    <img id="image-preview" src="" alt="Vista previa" class="hidden">
+                </div>
+                <button id="btn-predict" class="btn primary" disabled>Analizar Platillo</button>
+            </section>
+
+            <div id="loader" class="loader hidden">Procesando imagen, por favor espera...</div>
+            <div id="error-msg" class="error-msg hidden"></div>
+
+            <section id="results-section" class="results-section hidden">
+                <div class="card">
+                    <h2>Resultado Principal</h2>
+                    <p id="top1-result" class="highlight"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Top 5 Predicciones</h3>
+                    <ul id="topk-list" class="topk-list"></ul>
+                </div>
+
+                <div class="card nutrition-card">
+                    <h3 id="rec-title"></h3>
+                    <p id="rec-summary"></p>
+                    
+                    <h4>Información Nutricional</h4>
+                    <div class="nutrition-grid">
+                        <div class="nutri-item"><strong>Calorías:</strong> <span id="nut-cal"></span></div>
+                        <div class="nutri-item"><strong>Proteínas:</strong> <span id="nut-prot"></span></div>
+                        <div class="nutri-item"><strong>Carbohidratos:</strong> <span id="nut-carb"></span></div>
+                        <div class="nutri-item"><strong>Grasas:</strong> <span id="nut-fat"></span></div>
+                    </div>
+                    
+                    <p class="health-assessment"><strong>Salud:</strong> <span id="nut-health"></span></p>
+
+                    <h4>Ingredientes</h4>
+                    <ul id="rec-ingredients" class="ing-list"></ul>
+
+                    <h4>Recomendación</h4>
+                    <p id="rec-text"></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

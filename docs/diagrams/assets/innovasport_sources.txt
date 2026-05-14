@@ -1,0 +1,8 @@
+Fuentes de imagenes para metodologia_red_siamesa_tenis.drawio
+Origen: notebooks/data/innovasport_productos.json
+Metodo de mapeo: md5(imagen_principal) -> notebooks/data/productos/<hash>.jpg
+
+siamesa_tenis_1.jpg | sku: 000000000000394191 | titulo: tenis adidas adizero evo sl audi f1
+siamesa_tenis_2.jpg | sku: 000000000000399615 | titulo: tenis nike vomero premium
+siamesa_tenis_3.jpg | sku: 000000000000399598 | titulo: tenis nike vomero plus
+siamesa_tenis_4.jpg | sku: 000000000000397801 | titulo: tenis de futbol nike mercurial vapor 16 pro tf vini jr
